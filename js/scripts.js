@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-const capitalizeLetters = function (str) {
+  const capitalizeLetters = function (str) {
     const char1 = str[0].toUpperCase();
     const char2 = str[str.length - 1].toUpperCase();
     return char1 + char2
@@ -23,24 +23,32 @@ const capitalizeLetters = function (str) {
       count++;
     }
 
-    let selectMiddleChar = str[Math.Floor(count)];
+    let selectMiddleChar = str[Math.floor(count / 2)];
 
     return selectMiddleChar
   }
 
-  jQuery("h1").click(function() {
-    alert("newUserStr");
+  const reverseStr = function(str) {
+    let newString = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+      newString += str[i];
+    }
+
+    return newString
+  }
+
+  jQuery(".forwards").click(function() {
+    alert(userInput);
   });
 
-  $("img").click(function() {
-    alert("You clicked an image.")
+  $(".backwards").click(function() {
+    alert(backwardsUserStr)
   })
 
-  let userInput = prompt("Please enter a sentence:");
+  let userInput = prompt("Input a sentence: ")
 
-  // const userInput = "I am a sentence"
-  // I am a sentence ---> sI am a sentenceEI
-  // const reversedLetters = letters(userInput);
-  // const middleLetter = countLetters(userInput);
-  // const newUserStr = middleLetter + userInput + reversedLetters;
+  const reversedLetters = letters(userInput);
+  const middleLetter = countLetters(userInput);
+  const newUserStr = middleLetter + userInput + reversedLetters;
+  const backwardsUserStr = reverseStr(newUserStr);
 });
